@@ -1,0 +1,5 @@
+fprintf("Retrieving Data...");
+ref1 = readmatrix("dataexport.txt");
+fprintf("Data Retreived");
+
+tref1 = tr
