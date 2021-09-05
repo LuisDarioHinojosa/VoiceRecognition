@@ -36,12 +36,11 @@ kRef1 = kurtosis(rRef1);
 kRef2 = kurtosis(rRef2);
 kSamp = kurtosis(audioSample);
 
-% Compute all  the correlation coeficient combinations:
-sample = [t,audioSample];
-r1 = corr(ref1,sample);
-r2 = corr(ref2,sample);
-%r1c = corrcoef(ref1,sample)
-%r2c = corrcoef(ref2,sample)
+% Compute correlation matrix:
+samples = [rRef1 rRef2 audioSample];
+r2 = corrcoef(samples);
+cors = r2(1:2,3); % [ref2, red1]
+
 
 
 % Compute PDF & CDF probabilistic distributions for sample and references
@@ -74,6 +73,10 @@ mse1sc = RMSE(cdf1,cdfs);
 mse2sc = RMSE(cdf2,cdfs);
 
 
+% Results
+closer(mse1sp,mse2sp);
+pDist = normalize(cors);
+moreProbable(pDist);
 
 % Voice recognition summary
 % Plot the waveforms in time domain.
@@ -126,4 +129,29 @@ function createPlot(x,y,t,xl,yl,c)
     xlabel(xl)
     ylabel(yl)
     grid on
+end
+
+% Use on pdf
+function closer(rms1,rms2)
+    if(rms1 < rms2)
+        fprintf("The audio sample is closer to reference: A01028822 \n")
+    else
+        fprintf("The audio sample is closer to reference: A01274880 \n")
+    end
+end
+
+
+
+% Normalize correlation coeficients to a single probabilistic distribution
+function pDist = normalize(cors)
+    t = exp(cors);
+    pDist = t./sum(t);
+end
+
+function moreProbable(pDist)
+    if pDist(2) < pDist(1)
+        fprintf("It is more probable that the voice belongs to A01028822 \n")
+    else
+        fprintf("It is more probable that the voice belongs to A01274880 \n")
+    end
 end

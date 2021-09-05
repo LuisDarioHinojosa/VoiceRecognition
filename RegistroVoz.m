@@ -27,8 +27,10 @@ tab = [t myRecording];
 
 if strcmp(mat,"A01028822") == 1
     dlmwrite('A01028822.txt',tab,'delimiter','\t','newline','pc')
+    fprintf("Data written in A01028822.txt \n")
 else
     dlmwrite('A01274880.txt',tab,'delimiter','\t','newline','pc')
+    fprintf("Data written in A01274880.txt \n")
 end
 
 
