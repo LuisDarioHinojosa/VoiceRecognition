@@ -1,5 +1,41 @@
-fprintf("Retrieving Data...");
-ref1 = readmatrix("dataexport.txt");
-fprintf("Data Retreived");
+fprintf("Retrieving Data... \n");
+ref1 = readmatrix("A01028822.txt");
+ref2 = readmatrix("A01274880.txt");
+fprintf("Data Retreived \n");
 
-tref1 = tr
+% extract arrays from first reference
+tRef1 = ref1(:,1);
+rRef1 = ref1(:,2);
+
+% extract arrays from second reference
+tRef2 = ref2(:,1);
+rRef2 = ref2(:,2);
+
+% Record audio sample:
+
+
+
+
+% Record the second Voice
+
+
+
+
+
+
+
+
+
+
+% Plot the waveform.
+figure()
+subplot(1,2,1)
+plot(tRef1,rRef1);
+xlabel('time (secs)')
+ylabel('amplitude (V)')
+subplot(1,2,2)
+
+
+
+
+
