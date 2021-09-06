@@ -6,7 +6,10 @@ pe = "User is not registered. Enter another one: \n";
 
 mat = input(p1,'s')
 % user validation pending
-
+while strcmp(mat,"A01028822") == 0 | strcmp(mat,"A01028822") == 0
+    mat = input(pe,'s')
+end
+fprintf("Identification passed.\nPlease say in loud voice: Hola mundo! Esto es una prueba.\n ");
 
 q=3;
 % Record your voice for q seconds.
