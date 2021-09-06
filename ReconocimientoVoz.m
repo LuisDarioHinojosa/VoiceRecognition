@@ -31,15 +31,19 @@ audioSample = getaudiodata(recObj);
 qa=recObj.TotalSamples;
 t=(0:q/qa:q-q/qa)';
 
-% compute kurtosis for the waveforms
-kRef1 = kurtosis(rRef1);
-kRef2 = kurtosis(rRef2);
-kSamp = kurtosis(audioSample);
+
 
 % Compute correlation matrix:
 samples = [rRef1 rRef2 audioSample];
 r2 = corrcoef(samples);
 cors = r2(1:2,3); % [ref2, red1]
+
+s1 = [tRef1,rRef1];
+s2 = [tRef2,rRef2];
+ss = [t,audioSample];
+
+
+
 
 
 
